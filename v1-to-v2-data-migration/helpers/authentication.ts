@@ -3,7 +3,7 @@ import { GATEWAY } from './routes.ts'
 export async function authenticate(
   username: string,
   password: string
-): Promise<{ nonce: string }> {
+): Promise<string> {
   const response = await fetch(`${GATEWAY}/auth/authenticate`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
