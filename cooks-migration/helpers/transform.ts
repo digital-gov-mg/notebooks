@@ -1,13 +1,14 @@
 import { v4 as uuidv4 } from 'npm:uuid'
+import { ActionType, EventType } from './types.ts'
 
 export const transform = (
-  declaration,
-  eventType,
-  date,
-  user,
-  role,
-  location,
-  trackingId,
+  declaration: Record<string, unknown>,
+  eventType: EventType,
+  date: Date,
+  user: string,
+  role: string,
+  location: string,
+  trackingId: string,
 ) => ({
   id: uuidv4(),
   type: eventType,

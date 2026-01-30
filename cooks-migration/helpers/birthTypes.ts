@@ -19,6 +19,18 @@ export type BirthType =
   | 'TRIPLETS'
   | 'HIGHER_MULTIPLE_DELIVERY'
 
+export type OrderOfBirthTwins = 'ELDER_OF_TWINS' | 'YOUNGER_OF_TWINS'
+
+export type OrderOfBirthTriplets = 'FIRST_BORN' | 'SECOND_BORN' | 'THIRD_BORN'
+export type OrderOfBirthHigherMultiple =
+  | 'FIRST_BORN'
+  | 'SECOND_BORN'
+  | 'THIRD_BORN'
+  | 'FOURTH_BORN'
+  | 'FIFTH_BORN'
+  | 'SIXTH_BORN'
+  | 'SEVENTH_BORN'
+
 export type BirthResolver = {
   'informant.contact': string
   'reason.option': string
@@ -32,9 +44,9 @@ export type BirthResolver = {
   'child.birthLocation.privateHome': string
   'child.birthLocation.other': ResolverFunction<Address | undefined>
   'child.birthType': ResolverFunction<BirthType>
-  'child.orderOfBirth.twins': ResolverFunction<string>
-  'child.orderOfBirth.triplets': ResolverFunction<string>
-  'child.orderOfBirth.higherMultiple': ResolverFunction<string>
+  'child.orderOfBirth.twins': ResolverFunction<OrderOfBirthTwins | null>
+  'child.orderOfBirth.triplets': ResolverFunction<OrderOfBirthTriplets | null>
+  'child.orderOfBirth.higherMultiple': ResolverFunction<OrderOfBirthHigherMultiple | null>
   'child.weightAtBirth': string
   'child.attendantAtBirth': string
   'child.attendantAtBirth.other': string
@@ -84,7 +96,7 @@ export type BirthResolver = {
   'father.address': ResolverFunction<Address | undefined>
   'father.occupation': ResolverFunction<string>
   'informant.relation': ResolverFunction<BirthInformant>
-  'informant.other.relation': ResolverFunction<string>
+  'informant.other.relation': ResolverFunction<string | null>
   'informant.name': ResolverFunction<Name>
   'informant.dob': string
   'informant.dobUnknown': string

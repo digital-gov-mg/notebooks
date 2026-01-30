@@ -1,0 +1,612 @@
+[
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-001",
+    "admin2Name_en": "Avarua",
+    "admin3Pcode": "COK-001-001-001",
+    "admin3Name_en": "Tupapa"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-001",
+    "admin2Name_en": "Avarua",
+    "admin3Pcode": "COK-001-001-002",
+    "admin3Name_en": "Maraerenga"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-001",
+    "admin2Name_en": "Avarua",
+    "admin3Pcode": "COK-001-001-003",
+    "admin3Name_en": "Takuvaine"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-001",
+    "admin2Name_en": "Avarua",
+    "admin3Pcode": "COK-001-001-004",
+    "admin3Name_en": "Tutakimoa"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-001",
+    "admin2Name_en": "Avarua",
+    "admin3Pcode": "COK-001-001-005",
+    "admin3Name_en": "Ruatonga"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-001",
+    "admin2Name_en": "Avarua",
+    "admin3Pcode": "COK-001-001-006",
+    "admin3Name_en": "Avatiu"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-002",
+    "admin2Name_en": "Matavera",
+    "admin3Pcode": "COK-001-002-001",
+    "admin3Name_en": "Titama"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-002",
+    "admin2Name_en": "Matavera",
+    "admin3Pcode": "COK-001-002-002",
+    "admin3Name_en": "Vaenga"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-002",
+    "admin2Name_en": "Matavera",
+    "admin3Pcode": "COK-001-002-003",
+    "admin3Name_en": "Pouara"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-003",
+    "admin2Name_en": "Ngatangiia",
+    "admin3Pcode": "COK-001-003-001",
+    "admin3Name_en": "Turangi"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-003",
+    "admin2Name_en": "Ngatangiia",
+    "admin3Pcode": "COK-001-003-002",
+    "admin3Name_en": "Muri"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-003",
+    "admin2Name_en": "Ngatangiia",
+    "admin3Pcode": "COK-001-003-003",
+    "admin3Name_en": "Avana"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-004",
+    "admin2Name_en": "Titikaveka",
+    "admin3Pcode": "COK-001-004-001",
+    "admin3Name_en": "Vaima'anga"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-004",
+    "admin2Name_en": "Titikaveka",
+    "admin3Pcode": "COK-001-004-002",
+    "admin3Name_en": "Tikioki"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-004",
+    "admin2Name_en": "Titikaveka",
+    "admin3Pcode": "COK-001-004-003",
+    "admin3Name_en": "Akapuao"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-005",
+    "admin2Name_en": "Arorangi",
+    "admin3Pcode": "COK-001-005-001",
+    "admin3Name_en": "Aroa"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-005",
+    "admin2Name_en": "Arorangi",
+    "admin3Pcode": "COK-001-005-002",
+    "admin3Name_en": "Murienua"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-005",
+    "admin2Name_en": "Arorangi",
+    "admin3Pcode": "COK-001-005-003",
+    "admin3Name_en": "Akaoa"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-005",
+    "admin2Name_en": "Arorangi",
+    "admin3Pcode": "COK-001-005-004",
+    "admin3Name_en": "Inave"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-005",
+    "admin2Name_en": "Arorangi",
+    "admin3Pcode": "COK-001-005-005",
+    "admin3Name_en": "Ruaau"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-005",
+    "admin2Name_en": "Arorangi",
+    "admin3Pcode": "COK-001-005-006",
+    "admin3Name_en": "Tuoro"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-006",
+    "admin2Name_en": "Nikao",
+    "admin3Pcode": "COK-001-006-001",
+    "admin3Name_en": "Rangiura"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-006",
+    "admin2Name_en": "Nikao",
+    "admin3Pcode": "COK-001-006-002",
+    "admin3Name_en": "Tereora"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-006",
+    "admin2Name_en": "Nikao",
+    "admin3Pcode": "COK-001-006-003",
+    "admin3Name_en": "Tepuka"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-006",
+    "admin2Name_en": "Nikao",
+    "admin3Pcode": "COK-001-006-004",
+    "admin3Name_en": "Pokoinu"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-001",
+    "admin1Name_en": "Rarotonga",
+    "admin2Pcode": "COK-001-006",
+    "admin2Name_en": "Nikao",
+    "admin3Pcode": "COK-001-006-005",
+    "admin3Name_en": "Panama"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-002",
+    "admin1Name_en": "Aitutaki",
+    "admin2Pcode": "COK-002-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-002-001-001",
+    "admin3Name_en": "Amuri"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-002",
+    "admin1Name_en": "Aitutaki",
+    "admin2Pcode": "COK-002-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-002-001-002",
+    "admin3Name_en": "Arutanga"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-002",
+    "admin1Name_en": "Aitutaki",
+    "admin2Pcode": "COK-002-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-002-001-003",
+    "admin3Name_en": "Nikaupara"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-002",
+    "admin1Name_en": "Aitutaki",
+    "admin2Pcode": "COK-002-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-002-001-004",
+    "admin3Name_en": "Reureu"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-002",
+    "admin1Name_en": "Aitutaki",
+    "admin2Pcode": "COK-002-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-002-001-005",
+    "admin3Name_en": "Tautu"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-002",
+    "admin1Name_en": "Aitutaki",
+    "admin2Pcode": "COK-002-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-002-001-006",
+    "admin3Name_en": "Ureia"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-002",
+    "admin1Name_en": "Aitutaki",
+    "admin2Pcode": "COK-002-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-002-001-007",
+    "admin3Name_en": "Vaipae"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-002",
+    "admin1Name_en": "Aitutaki",
+    "admin2Pcode": "COK-002-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-002-001-008",
+    "admin3Name_en": "Vaitupa"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-003",
+    "admin1Name_en": "Atiu",
+    "admin2Pcode": "COK-003-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-003-001-001",
+    "admin3Name_en": "Areora"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-003",
+    "admin1Name_en": "Atiu",
+    "admin2Pcode": "COK-003-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-003-001-002",
+    "admin3Name_en": "Mapumai"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-003",
+    "admin1Name_en": "Atiu",
+    "admin2Pcode": "COK-003-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-003-001-003",
+    "admin3Name_en": "Ngatiarua"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-003",
+    "admin1Name_en": "Atiu",
+    "admin2Pcode": "COK-003-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-003-001-004",
+    "admin3Name_en": "Teenui"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-003",
+    "admin1Name_en": "Atiu",
+    "admin2Pcode": "COK-003-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-003-001-005",
+    "admin3Name_en": "Tengatangi"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-004",
+    "admin1Name_en": "Mauke",
+    "admin2Pcode": "COK-004-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-004-001-001",
+    "admin3Name_en": "Kimiangatau"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-004",
+    "admin1Name_en": "Mauke",
+    "admin2Pcode": "COK-004-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-004-001-002",
+    "admin3Name_en": "Makatea-Areora"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-004",
+    "admin1Name_en": "Mauke",
+    "admin2Pcode": "COK-004-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-004-001-003",
+    "admin3Name_en": "Ngatiarua"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-005",
+    "admin1Name_en": "Mitiaro",
+    "admin2Pcode": "COK-005-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-005-001-001",
+    "admin3Name_en": "Auta-Atai"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-005",
+    "admin1Name_en": "Mitiaro",
+    "admin2Pcode": "COK-005-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-005-001-002",
+    "admin3Name_en": "Takaue"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-006",
+    "admin1Name_en": "Mangaia",
+    "admin2Pcode": "COK-006-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-006-001-001",
+    "admin3Name_en": "Ivirua"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-006",
+    "admin1Name_en": "Mangaia",
+    "admin2Pcode": "COK-006-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-006-001-002",
+    "admin3Name_en": "Karanga"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-006",
+    "admin1Name_en": "Mangaia",
+    "admin2Pcode": "COK-006-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-006-001-003",
+    "admin3Name_en": "Veitaitei"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-006",
+    "admin1Name_en": "Mangaia",
+    "admin2Pcode": "COK-006-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-006-001-004",
+    "admin3Name_en": "Tamarua"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-006",
+    "admin1Name_en": "Mangaia",
+    "admin2Pcode": "COK-006-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-006-001-005",
+    "admin3Name_en": "Tavaenga"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-006",
+    "admin1Name_en": "Mangaia",
+    "admin2Pcode": "COK-006-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-006-001-006",
+    "admin3Name_en": "Keia"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-007",
+    "admin1Name_en": "Palmerston",
+    "admin2Pcode": "COK-007-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-007-001-001",
+    "admin3Name_en": "Palmerston"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-008",
+    "admin1Name_en": "Manihiki",
+    "admin2Pcode": "COK-008-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-008-001-001",
+    "admin3Name_en": "Tauhunu"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-008",
+    "admin1Name_en": "Manihiki",
+    "admin2Pcode": "COK-008-002",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-008-001-002",
+    "admin3Name_en": "Tukao"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-009",
+    "admin1Name_en": "Rakahanga",
+    "admin2Pcode": "COK-009-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-009-001-001",
+    "admin3Name_en": "Matara"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-009",
+    "admin1Name_en": "Rakahanga",
+    "admin2Pcode": "COK-009-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-009-001-002",
+    "admin3Name_en": "Numahanga"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-010",
+    "admin1Name_en": "Penrhyn",
+    "admin2Pcode": "COK-010-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-010-001-001",
+    "admin3Name_en": "Omoka"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-010",
+    "admin1Name_en": "Penrhyn",
+    "admin2Pcode": "COK-010-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-010-001-002",
+    "admin3Name_en": "Te-Tautua"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-011",
+    "admin1Name_en": "Pukapuka",
+    "admin2Pcode": "COK-011-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-011-001-001",
+    "admin3Name_en": "Ngake"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-011",
+    "admin1Name_en": "Pukapuka",
+    "admin2Pcode": "COK-011-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-011-001-002",
+    "admin3Name_en": "Roto"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-011",
+    "admin1Name_en": "Pukapuka",
+    "admin2Pcode": "COK-011-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-011-001-003",
+    "admin3Name_en": "Yato"
+  },
+  {
+    "admin0Pcode": "COK",
+    "admin0Name_en": "Cook Islands",
+    "admin1Pcode": "COK-012",
+    "admin1Name_en": "Nassau",
+    "admin2Pcode": "COK-012-001",
+    "admin2Name_en": "N/A",
+    "admin3Pcode": "COK-012-001-001",
+    "admin3Name_en": "Nassau"
+  }
+]
