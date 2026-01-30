@@ -1,15 +1,20 @@
 import { BirthCsvRecord, CsvFields } from '../helpers/csvTypes.ts'
+import { BirthResolver, BirthInformant } from '../helpers/birthTypes.ts'
+import { Gender, LocationMap } from '../helpers/types.ts'
+import { Address } from '../helpers/addressConfig.ts'
+import { birthInformantMap } from '../lookupMappings/informantTypes.ts'
 
 const lookUpNameChange = (CsvFields: CsvFields, birthRef: string) => {
   return CsvFields.deedpoll
     .filter((record) => record.BIRTH_REF === birthRef)
     .sort(
       (a, b) =>
-        new Date(toDate(a.DATE)).getTime() - new Date(toDate(b.DATE)).getTime(),
+        new Date(toISODate(a.DATE)).getTime() -
+        new Date(toISODate(b.DATE)).getTime(),
     )
 }
 
-const toDate = (dateString: string): string => {
+const toISODate = (dateString: string): string => {
   const [month, day, year] = dateString.split('/').map(Number)
   if (!month || !day || !year) return ''
 
@@ -17,21 +22,70 @@ const toDate = (dateString: string): string => {
   return date.toISOString()
 }
 
-export const birthResolver = {
+const toDate = (dateString: string): string => {
+  const [month, day, year] = dateString.split('/').map(Number)
+  if (!month || !day || !year) return ''
+
+  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+}
+
+const resolveAddress = (
+  addressString: string,
+  locationMap: LocationMap[],
+): Address | undefined => {
+  const location = locationMap.find((loc) => loc.name === addressString)
+  if (location?.id) {
+    return {
+      addressType: 'DOMESTIC',
+      country: 'COK',
+      administrativeArea: location.id,
+      streetLevelDetails: {},
+    }
+  }
+}
+
+const toName = (firstname: string, surname: string) => ({
+  firstname,
+  surname,
+})
+
+const toAge = (ageString: string) => {
+  const age = Number(ageString)
+  return isNaN(age) || age === 0 ? null : age
+}
+
+const toGender = (genderString: string): Gender => {
+  switch (genderString) {
+    case 'M':
+      return 'male'
+    case 'F':
+      return 'female'
+    default:
+      return 'unknown'
+  }
+}
+
+export const birthResolver: BirthResolver = {
   'informant.contact': '',
   'reason.option': '',
   'reason.other': '',
-  'child.name': (data: BirthCsvRecord) => ({
-    firstName: data.CHILDS_NAME,
-    surname: data.FATHERS_SURNAME,
-  }),
+  'child.name': (data: BirthCsvRecord) =>
+    toName(data.CHILDS_NAME, data.FATHERS_SURNAME || data.MOTHERS_SURNAME),
   'child.dob': (data: BirthCsvRecord) => toDate(data.CHILDS_DOB),
   'child.reason': '',
-  'child.gender': (data: BirthCsvRecord) => data.CHILDS_GENDER,
+  'child.gender': (data: BirthCsvRecord) => toGender(data.CHILDS_GENDER),
   'child.placeOfBirth': (data: BirthCsvRecord) => data.CHILDS_BIRTHPLACE, // Calculate from birth.CHILDS_BIRTHPLACE
-  'child.birthLocation': (data: BirthCsvRecord) => data.CHILDS_BIRTHPLACE,
+  'child.birthLocation': (
+    data: BirthCsvRecord,
+    _: CsvFields,
+    locationMap: LocationMap[],
+  ) => resolveAddress(data.CHILDS_BIRTHPLACE, locationMap),
   'child.birthLocation.privateHome': '',
-  'child.birthLocation.other': (data: BirthCsvRecord) => data.CHILDS_BIRTHPLACE,
+  'child.birthLocation.other': (
+    data: BirthCsvRecord,
+    _: CsvFields,
+    locationMap: LocationMap[],
+  ) => resolveAddress(data.CHILDS_BIRTHPLACE, locationMap),
   'child.birthType': (data: BirthCsvRecord) => data.CHILDS_TWIN, // TODO these will all need some kind of interpretation function
   'child.orderOfBirth.twins': (data: BirthCsvRecord) => data.CHILDS_TWIN,
   'child.orderOfBirth.triplets': (data: BirthCsvRecord) => data.CHILDS_TWIN,
@@ -67,10 +121,12 @@ export const birthResolver = {
 
   'mother.detailsUnavailable': '',
   'mother.unavailableReason': '',
-  'mother.name': (data: BirthCsvRecord) => data.MOTHERS_NAME,
+  'mother.name': (data: BirthCsvRecord) =>
+    toName(data.MOTHERS_NAME, data.MOTHERS_SURNAME),
   'mother.dob': (data: BirthCsvRecord) => toDate(data.MOTHERS_DOB),
-  'mother.dobUnknown': '',
-  'mother.age': (data: BirthCsvRecord) => data.MOTHERS_AGE,
+  'mother.dobUnknown': (data: BirthCsvRecord) =>
+    Boolean(!data.MOTHERS_DOB && data.MOTHERS_AGE),
+  'mother.age': (data: BirthCsvRecord) => toAge(data.MOTHERS_AGE),
   'mother.maritalStatus': '',
   'mother.maidenName': (data: BirthCsvRecord) => data.MOTHERS_MAIDEN_NAME,
   'mother.placeOfBirth': (data: BirthCsvRecord) => data.MOTHERS_BIRTHPLACE,
@@ -79,15 +135,20 @@ export const birthResolver = {
   'mother.passport': '',
   'mother.bc': '',
   'mother.other': '',
-  'mother.address': (data: BirthCsvRecord) => data.MOTHERS_ADDRESS,
+  'mother.address': (
+    data: BirthCsvRecord,
+    _: CsvFields,
+    locationMap: LocationMap[],
+  ) => resolveAddress(data.MOTHERS_ADDRESS, locationMap),
   'mother.occupation': '',
   'father.detailsUnavailable': '',
   'father.unavailableReason': '',
-  'father.name': (data: BirthCsvRecord) => data.FATHERS_NAME,
+  'father.name': (data: BirthCsvRecord) =>
+    toName(data.FATHERS_NAME, data.FATHERS_SURNAME),
   'father.dob': (data: BirthCsvRecord) => toDate(data.FATHERS_DOB),
   'father.dobUnknown': (data: BirthCsvRecord) =>
-    !data.FATHERS_DOB && data.FATHERS_AGE, // Calculate
-  'father.age': (data: BirthCsvRecord) => data.FATHERS_AGE,
+    Boolean(!data.FATHERS_DOB && data.FATHERS_AGE),
+  'father.age': (data: BirthCsvRecord) => toAge(data.FATHERS_AGE),
   'father.placeOfBirth': (data: BirthCsvRecord) => data.FATHERS_BIRTHPLACE,
   'father.nationality': (data: BirthCsvRecord) => data.FATHERS_NATIONALITY,
   'father.idType': '',
@@ -95,12 +156,24 @@ export const birthResolver = {
   'father.bc': '',
   'father.other': '',
   'father.sameAsMotherResidence': '', // Calculate
-  'father.address': (data: BirthCsvRecord) => data.FATHERS_ADDRESS,
+  'father.address': (
+    data: BirthCsvRecord,
+    _: CsvFields,
+    locationMap: LocationMap[],
+  ) => resolveAddress(data.FATHERS_ADDRESS, locationMap),
   'father.occupation': (data: BirthCsvRecord) => data.FATHERS_OCCUPATION,
-  'informant.relation': (data: BirthCsvRecord) => data.INFORMANTS_RELATIONSHIP,
+  'informant.relation': (data: BirthCsvRecord): BirthInformant => {
+    const relation = data.INFORMANTS_RELATIONSHIP || ''
+    return birthInformantMap[relation] || 'OTHER'
+  }, // Map to data type
   'informant.other.relation': (data: BirthCsvRecord) =>
     data.INFORMANTS_RELATIONSHIP, // Calculate
-  'informant.name': (data: BirthCsvRecord) => data.INFORMANTS_NAME,
+  'informant.name': (data: BirthCsvRecord) => {
+    const names = data.INFORMANTS_NAME.split(' ').filter(Boolean)
+    const surname = names.length > 1 ? names.pop() || '' : ''
+    const firstname = names.join(' ')
+    return toName(firstname, surname)
+  },
   'informant.dob': '',
   'informant.dobUnknown': '',
   'informant.age': '',
@@ -109,7 +182,11 @@ export const birthResolver = {
   'informant.passport': '',
   'informant.bc': '',
   'informant.other': '',
-  'informant.address': (data: BirthCsvRecord) => data.INFORMANTS_ADDRESS,
+  'informant.address': (
+    data: BirthCsvRecord,
+    _: CsvFields,
+    locationMap: LocationMap[],
+  ) => resolveAddress(data.INFORMANTS_ADDRESS, locationMap),
   'informant.occupation': (data: BirthCsvRecord) => data.INFORMANTS_OCCUPATION,
   'informant.phoneNo': '',
   'informant.email': '',
