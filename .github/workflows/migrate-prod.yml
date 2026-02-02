@@ -11,6 +11,7 @@ on:
         options:
           - staging
           - production
+          - qa
       event:
         description: 'The event to process (birth or death)'
         required: true
