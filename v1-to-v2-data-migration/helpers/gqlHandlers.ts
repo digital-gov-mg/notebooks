@@ -45,7 +45,7 @@ export const bulkImport = async (documents: any[], token: string) => {
 
   if (!response.ok) {
     console.log('DECLARE ERROR!')
-    console.log((await response.json()).error)
+    console.log("response :>> ", response)
 
     throw new Error(`Event creation failed: ${response.statusText}`)
   }
