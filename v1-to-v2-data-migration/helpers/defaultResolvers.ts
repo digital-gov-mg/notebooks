@@ -12,6 +12,7 @@ import {
 import { EventRegistration, ResolverMap } from './types.ts'
 import { resolveName } from '../countryData/nameResolver.ts'
 import { getCustomFieldVerificationStatus } from '../countryData/verificationResolver.ts'
+import { isValidDate, normalizeDateString } from './dateUtils.ts'
 
 const informantResolver: ResolverMap = {
   'informant.dob': (data: EventRegistration, eventType: 'birth' | 'death') =>
@@ -317,7 +318,16 @@ export const defaultBirthResolver: ResolverMap = {
   'father.reason': (data: EventRegistration) => data.father?.reasonNotApplying,
   'father.name': (data: EventRegistration) =>
     resolveName(data, data.father?.name?.[0]),
-  'father.dob': (data: EventRegistration) => data.father?.birthDate,
+  'father.dob': (data: EventRegistration) => {
+      const dateStr = data.father?.birthDate
+
+      if (!dateStr) return undefined
+  
+      if (isValidDate(dateStr)) {
+        const normalized = normalizeDateString(dateStr);
+        return normalized
+      }
+    },
   'father.dobUnknown': (data: EventRegistration) =>
     data.father?.exactDateOfBirthUnknown,
   'father.age': (data: EventRegistration) =>
