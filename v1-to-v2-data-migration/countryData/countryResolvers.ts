@@ -26,7 +26,10 @@ const initialCountryResolver = {
       const normalized = normalizeDateString(dateStr);
       return normalized
     }
-    return '2026-01-01'
+
+    // Try and get date the record was registered
+    const dateFromStatus = data.registration?.status.reverse().find(status => status.type === 'REGISTERED')?.timestamp.split('T')[0]
+    return dateFromStatus ?? '2026-01-01'
   }
     /* getCustomField(
       data,
