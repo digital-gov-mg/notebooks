@@ -26,9 +26,10 @@ const initialCountryResolver = {
       const normalized = normalizeDateString(dateStr);
       return normalized
     }
-
+    console.log('Invalid legacyBirthRegistrationDate :>> ', dateStr);
     // Try and get date the record was registered
     const dateFromStatus = data.registration?.status.reverse().find(status => status.type === 'REGISTERED')?.timestamp.split('T')[0]
+    console.log('returning either dateFromStatus or a default date :>> ',  dateFromStatus ? dateFromStatus : '2026-01-01');
     return dateFromStatus ?? '2026-01-01'
   }
     /* getCustomField(
