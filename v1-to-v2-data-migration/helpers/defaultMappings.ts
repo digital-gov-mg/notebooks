@@ -145,6 +145,9 @@ export const VERIFIED_MAPPINGS: Record<
   'death.spouse.verified': (data: string) => ({
     'spouse.verified': data === '' ? undefined : data,
   }),
+  'birth.father.fatherBirthDate': (data: string) => ({
+    'father.dob': data === '' ? undefined : data,
+  }),
 }
 
 export const AGE_MAPPINGS: Record<
