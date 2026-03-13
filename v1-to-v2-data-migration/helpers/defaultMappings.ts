@@ -148,6 +148,9 @@ export const VERIFIED_MAPPINGS: Record<
   'birth.father.fatherBirthDate': (data: string) => ({
     'father.dob': data === '' ? undefined : data,
   }),
+  'birth.informant.informantBirthDate': (data: string) => ({
+    'informant.dob': data === '' ? undefined : data,
+  }),
 }
 
 export const AGE_MAPPINGS: Record<
