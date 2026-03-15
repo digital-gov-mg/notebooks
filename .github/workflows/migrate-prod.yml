@@ -26,6 +26,10 @@ on:
         required: false
         type: number
         default: 0
+      single_record:
+        description: 'ID of a single record to migrate (for testing)'
+        required: false
+        type: string
 
 jobs:
   migrate:
@@ -62,6 +66,7 @@ jobs:
           RECORD_SKIP: ${{ github.event.inputs.skip }}
           OPENCRVS_CLIENT_ID: ${{ secrets.OPENCRVS_CLIENT_ID }}
           OPENCRVS_CLIENT_SECRET: ${{ secrets.OPENCRVS_CLIENT_SECRET }}
+          SINGLE_RECORD: ${{ github.event.inputs.single_record }}
         run: |
           set -o pipefail
           echo "script_output<<EOF" >> $GITHUB_OUTPUT
