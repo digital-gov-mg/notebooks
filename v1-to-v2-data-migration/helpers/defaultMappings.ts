@@ -38,7 +38,7 @@ export const DEFAULT_FIELD_MAPPINGS = {
   'birth.father.fatherBirthRegistrationNumber': 'father.brn',
   'birth.father.detailsExist': 'father.detailsNotAvailable',
   'birth.father.reasonNotApplying': 'father.reason',
-  'birth.father.fatherBirthDate': 'father.dob',
+  /* 'birth.father.fatherBirthDate': 'father.dob', */
   'birth.father.exactDateOfBirthUnknown': 'father.dobUnknown',
   'birth.father.nationality': 'father.nationality',
   'birth.father.maritalStatus': 'father.maritalStatus',
