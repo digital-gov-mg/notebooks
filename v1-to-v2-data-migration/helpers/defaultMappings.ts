@@ -12,7 +12,7 @@ export const DEFAULT_FIELD_MAPPINGS = {
   'birth.informant.informantNationalId': 'informant.nid',
   'birth.informant.informantPassport': 'informant.passport',
   'birth.informant.informantBirthRegistrationNumber': 'informant.brn',
-  'birth.informant.informantBirthDate': 'informant.dob',
+  /* 'birth.informant.informantBirthDate': 'informant.dob', */
   'birth.informant.registrationPhone': 'informant.phoneNo',
   'birth.informant.registrationEmail': 'informant.email',
   'birth.informant.informantType': 'informant.relation',
