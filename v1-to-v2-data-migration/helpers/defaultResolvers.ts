@@ -101,7 +101,7 @@ const informantResolver: ResolverMap = {
 
 export const documentsResolver: ResolverMap = {
   'documents.proofOfBirth': (data: EventRegistration) =>
-    getDocument(data, 'CHILD'),
+    getDocuments(data, 'CHILD'),
   'documents.proofOfMother': (data: EventRegistration) =>
     getDocuments(data, 'MOTHER'),
   'documents.proofOfFather': (data: EventRegistration) =>
