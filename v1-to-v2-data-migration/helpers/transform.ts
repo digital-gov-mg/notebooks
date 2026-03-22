@@ -419,12 +419,6 @@ const preProcessHistory = (eventRegistration: EventRegistration) => {
         ],
       })
       issuances++
-    } else if (!historyItem.action && historyItem.regStatus === 'ISSUED') {
-      issued.push({
-        ...historyItem,
-        certificates: [historyItem.certificates?.reverse()?.[issuances]],
-      })
-      issuances++
     } else if (historyItem.action === 'REINSTATED') {
       reinstated.push(historyItem)
     } else if (!historyItem.action && historyItem.regStatus === 'ARCHIVED') {

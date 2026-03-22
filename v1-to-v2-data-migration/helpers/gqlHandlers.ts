@@ -118,7 +118,7 @@ const GetRegistrationsList = async (
     body: JSON.stringify({
       operationName: 'GetRegistrationsListByFilter',
       query: `query GetRegistrationsListByFilter {
-        searchEvents(advancedSearchParameters: { event: ${event} }, count: ${pageSize}, skip: ${skip}, sortColumn: "createdAt.keyword") {
+        searchEvents(advancedSearchParameters: { event: ${event}, registrationStatuses: ["ISSUED"] }, count: ${pageSize}, skip: ${skip}, sortColumn: "createdAt.keyword") {
           totalItems
           results {
             ... on ${searchSet} {
