@@ -208,6 +208,7 @@ function legacyHistoryItemToV2ActionType(
             'review.comment': declareResolver['review.comment'](historyItem),
           },
         }
+      case 'ISSUED':
       case 'CERTIFIED':
         const annotation = {}
         Object.keys(collectorResolver).forEach((key) => {
@@ -458,7 +459,6 @@ export function transform(
   const historyAsc = processedHistory
     .sort((a, b) => new Date(a.date).valueOf() - new Date(b.date).valueOf())
     .filter((x) => x.system?.type !== 'IMPORT_EXPORT') // Remove migration system actions
-    .filter((x) => x.action || x.regStatus !== 'ISSUED') // We're dropping issued in favour of certified
 
   const newest = historyAsc[historyAsc.length - 1]
 
