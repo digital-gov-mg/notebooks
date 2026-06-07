@@ -1,5 +1,23 @@
 import { API, GATEWAY } from './routes.ts'
 
+const fetchWithRetry = async (
+  url: string,
+  options: RequestInit,
+  maxAttempts = 3
+): Promise<Response> => {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await fetch(url, options)
+    } catch (err) {
+      if (attempt === maxAttempts) throw err
+      const delay = 1000 * 2 ** (attempt - 1) // 1s, 2s
+      console.warn(`Fetch failed (attempt ${attempt}/${maxAttempts}), retrying in ${delay}ms...`, err)
+      await new Promise((r) => setTimeout(r, delay))
+    }
+  }
+  throw new Error('unreachable')
+}
+
 export const declareEvent = async (document: any, token: string) => {
   const response = await fetch(`${GATEWAY}/events/event.import`, {
     method: 'POST',
@@ -27,7 +45,7 @@ export const declareEvent = async (document: any, token: string) => {
 }
 
 export const bulkImport = async (documents: any[], token: string) => {
-  const response = await fetch(`${GATEWAY}/events/event.bulkImport`, {
+  const response = await fetchWithRetry(`${GATEWAY}/events/event.bulkImport`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -156,7 +174,7 @@ export const fetchBirthRegistration = async (
   recordId: string,
   token: string
 ) => {
-  const response = await fetch(`${GATEWAY}/graphql`, {
+  const response = await fetchWithRetry(`${GATEWAY}/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -1129,7 +1147,10 @@ export const syncLocations = async (token: string) => {
     },
   })
   if (!response.ok) {
-    throw new Error(`Sync Locations failed: ${response.statusText}`)
+    const body = await response.text().catch(() => '(unreadable body)')
+    throw new Error(
+      `Sync Locations failed: ${response.status} ${response.statusText}\n${body}`
+    )
   }
   return response.statusText
 }
