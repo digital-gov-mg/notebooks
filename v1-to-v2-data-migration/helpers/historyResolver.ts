@@ -4,9 +4,9 @@ export const collectorResolver = {
   'collector.requesterId': (data: Certificate) =>
     other(data) ? 'SOMEONE_ELSE' : data.collector?.relationship,
   'collector.OTHER.name': (data: Certificate) =>
-    other(data) && {
-      surname: data.collector?.name[0].familyName, // TODO - I think I need to use the name resolver
-      firstname: data.collector?.name[0].firstNames,
+    other(data) && data.collector?.name?.[0] && {
+      surname: data.collector.name[0].familyName,
+      firstname: data.collector.name[0].firstNames,
     },
   'collector.brn': (data: Certificate) =>
     getIdForType(data, 'BIRTH_REGISTRATION_NUMBER'),
