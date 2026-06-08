@@ -122,36 +122,47 @@ const GetRegistrationsList = async (
   token: string,
   event: string,
   page: number,
-  pageSize: number
+  pageSize: number,
+  maxAttempts = 5
 ) => {
   const skip = (page - 1) * pageSize
   const searchSet =
     event === 'birth' ? 'BirthEventSearchSet' : 'DeathEventSearchSet'
-  const response = await fetch(`${GATEWAY}/graphql`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      operationName: 'GetRegistrationsListByFilter',
-      query: `query GetRegistrationsListByFilter {
-        searchEvents(advancedSearchParameters: { event: ${event} }, count: ${pageSize}, skip: ${skip}, sortColumn: "createdAt.keyword") {
-          totalItems
-          results {
-            ... on ${searchSet} {
-              id
-            }
+  const requestBody = JSON.stringify({
+    operationName: 'GetRegistrationsListByFilter',
+    query: `query GetRegistrationsListByFilter {
+      searchEvents(advancedSearchParameters: { event: ${event} }, count: ${pageSize}, skip: ${skip}, sortColumn: "createdAt.keyword") {
+        totalItems
+        results {
+          ... on ${searchSet} {
+            id
           }
         }
-      }`,
-    }),
+      }
+    }`,
   })
-  if (!response.ok) {
-    console.log('response :>> ', response);
-    throw new Error(`GraphQL request failed: ${response.statusText}`)
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const response = await fetch(`${GATEWAY}/graphql`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: requestBody,
+    })
+    if (response.status === 504) {
+      const delay = 15000 * attempt // 15s, 30s, 45s, 60s, 75s
+      console.warn(`searchEvents gateway timeout (attempt ${attempt}/${maxAttempts}), retrying in ${delay}ms...`)
+      await new Promise((r) => setTimeout(r, delay))
+      continue
+    }
+    if (!response.ok) {
+      throw new Error(`GraphQL request failed: ${response.status} ${response.statusText}`)
+    }
+    return response.json()
   }
-  return response.json()
+  throw new Error(`searchEvents gateway timeout after ${maxAttempts} attempts (skip=${skip})`)
 }
 
 export const fetchAllBirthRegistrations = async (
@@ -1138,21 +1149,28 @@ export const fetchDeathRegistration = async (
   return response.json()
 }
 
-export const syncLocations = async (token: string) => {
-  const response = await fetch(`${API}/events/sync-locations`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  })
-  if (!response.ok) {
-    const body = await response.text().catch(() => '(unreadable body)')
-    throw new Error(
-      `Sync Locations failed: ${response.status} ${response.statusText}\n${body}`
-    )
+export const syncLocations = async (token: string, maxAttempts = 5) => {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const response = await fetch(`${API}/events/sync-locations`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    if (response.status === 504) {
+      const delay = 15000 * attempt // 15s, 30s, 45s, 60s, 75s
+      console.warn(`syncLocations gateway timeout (attempt ${attempt}/${maxAttempts}), retrying in ${delay}ms...`)
+      await new Promise((r) => setTimeout(r, delay))
+      continue
+    }
+    if (!response.ok) {
+      const body = await response.text().catch(() => '(unreadable body)')
+      throw new Error(`Sync Locations failed: ${response.status} ${response.statusText}\n${body}`)
+    }
+    return response.statusText
   }
-  return response.statusText
+  throw new Error(`syncLocations gateway timeout after ${maxAttempts} attempts`)
 }
 
 export const reindex = async (token: string) => {
