@@ -3,17 +3,27 @@ import { API, GATEWAY } from './routes.ts'
 const fetchWithRetry = async (
   url: string,
   options: RequestInit,
-  maxAttempts = 3
+  maxAttempts = 5
 ): Promise<Response> => {
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    let response: Response
     try {
-      return await fetch(url, options)
+      response = await fetch(url, options)
     } catch (err) {
       if (attempt === maxAttempts) throw err
-      const delay = 1000 * 2 ** (attempt - 1) // 1s, 2s
+      const delay = 1000 * 2 ** (attempt - 1)
       console.warn(`Fetch failed (attempt ${attempt}/${maxAttempts}), retrying in ${delay}ms...`, err)
       await new Promise((r) => setTimeout(r, delay))
+      continue
     }
+    if (response.status === 504) {
+      if (attempt === maxAttempts) return response
+      const delay = 15000 * attempt // 15s, 30s, 45s, 60s
+      console.warn(`Gateway timeout (attempt ${attempt}/${maxAttempts}), retrying in ${delay}ms...`)
+      await new Promise((r) => setTimeout(r, delay))
+      continue
+    }
+    return response
   }
   throw new Error('unreachable')
 }
