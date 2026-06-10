@@ -12,7 +12,7 @@ export const collectorResolver = {
     getIdForType(data, 'BIRTH_REGISTRATION_NUMBER'),
   'collector.nid': (data: Certificate) => getIdForType(data, 'NATIONAL_ID'),
   'collector.OTHER.idType': (data: Certificate) =>
-    other(data) && getId(data).type,
+    other(data) && getId(data)?.type,
   'collector.PASSPORT.details': (data: Certificate) =>
     getIdForType(data, 'PASSPORT'),
   'collector.DRIVING-LICENCE.details': (data: Certificate) =>
@@ -24,7 +24,7 @@ export const collectorResolver = {
   'collector.ALIEN-NUMBER.details': (data: Certificate) =>
     getIdForType(data, 'ALIEN_NUMBER'),
   'collector.OTHER.idTypeOther': (data: Certificate) =>
-    other(data) && getId(data).otherType,
+    other(data) && getId(data)?.otherType,
   'collector.OTHER.idNumberOther': (data: Certificate) =>
     getIdForType(data, 'OTHER'),
   'collector.OTHER.relationshipToChild': (data: Certificate) =>
