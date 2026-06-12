@@ -159,7 +159,7 @@ function legacyHistoryItemToV2ActionType(
   historyItem: HistoryItem,
   eventType: 'birth' | 'death',
   rejectItem: boolean
-): Partial<Action> {
+): Partial<Action> | null {
   if (!historyItem.action) {
     const signed = record.registration.informantsSignature
     const uri = signed && new URL(signed)
@@ -300,9 +300,13 @@ function legacyHistoryItemToV2ActionType(
         annotation: historyItem.annotation,
       }
     case 'ASSIGNED':
+      if (!historyItem.user?.id) {
+        console.warn('Skipping ASSIGN action with no user id', historyItem)
+        return null
+      }
       return {
         type: 'ASSIGN' as ActionType,
-        assignedTo: historyItem.user?.id,
+        assignedTo: historyItem.user.id,
         declaration: {},
       }
     case 'REJECTED_CORRECTION':
@@ -483,8 +487,16 @@ export function transform(
         id: uuidv4(),
         transactionId: uuidv4(),
       },
-      ...historyAsc.map((history) => {
-        return {
+      ...historyAsc.flatMap((history) => {
+        const actionData = legacyHistoryItemToV2ActionType(
+          eventRegistration,
+          declaration,
+          history,
+          eventType,
+          newest.regStatus === 'WAITING_VALIDATION'
+        )
+        if (actionData === null) return []
+        return [{
           id: history?.id || uuidv4(), // TODO for some reason the backend can send items with the same id, breaking Pkey
           transactionId: uuidv4(),
           createdAt: new Date(history.date).toISOString(),
@@ -496,14 +508,8 @@ export function transform(
           createdAtLocation: history.office?.id,
           updatedAtLocation: history.office?.id,
           status: 'Accepted',
-          ...legacyHistoryItemToV2ActionType(
-            eventRegistration,
-            declaration,
-            history,
-            eventType,
-            newest.regStatus === 'WAITING_VALIDATION'
-          ),
-        } as Action
+          ...actionData,
+        } as Action]
       }),
     ],
   }
