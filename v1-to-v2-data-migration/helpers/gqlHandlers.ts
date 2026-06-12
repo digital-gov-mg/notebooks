@@ -73,7 +73,8 @@ export const bulkImport = async (documents: any[], token: string) => {
 
   if (!response.ok) {
     console.log('DECLARE ERROR!')
-    console.log("response :>> ", response)
+    const errorBody = await response.json().catch(() => response.text())
+    console.log("response body :>> ", JSON.stringify(errorBody, null, 2))
 
     throw new Error(`Event creation failed: ${response.statusText}`)
   }
