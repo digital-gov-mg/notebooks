@@ -41,11 +41,13 @@ const initialCountryResolver = {
       data,
       'birth.child.child-view-group.legacyBirthRegistrationTime'
     ),
-  'informant.customizedExactDateOfBirthUnknown': (data: EventRegistration) =>
-    getCustomField(
-      data,
-      'birth.informant.informant-view-group.customizedExactDateOfBirthUnknown'
-    ),
+  'informant.customizedExactDateOfBirthUnknown': (data: EventRegistration) => {
+    const val = getCustomField(data, 'birth.informant.informant-view-group.customizedExactDateOfBirthUnknown')
+    if (val === 'true' || val === true) return true
+    if (val === 'false' || val === false) return false
+    if (val != null) return true // année ou autre valeur non-boolean = date inconnue
+    return undefined
+  },
   'informant.yearOfBirth': (data: EventRegistration) =>
     getCustomField(data, 'birth.informant.informant-view-group.yearOfBirth'),
   'informant.iD': (data: EventRegistration) =>
@@ -57,11 +59,13 @@ const initialCountryResolver = {
   'mother.motherIsDeceased': (data: EventRegistration) =>
     getCustomField(data, 'birth.mother.mother-view-group.motherIsDeceased'),
   /* 'mother.address.streetLevelDetails.fokontanyCustomAddress': (data) => getCustomField(data,'birth.mother.mother-view-group.fokontanyCustomAddress'), */
-  'mother.customizedExactDateOfBirthUnknown': (data: EventRegistration) =>
-    getCustomField(
-      data,
-      'birth.mother.mother-view-group.customizedExactDateOfBirthUnknown'
-    ),
+  'mother.customizedExactDateOfBirthUnknown': (data: EventRegistration) => {
+    const val = getCustomField(data, 'birth.mother.mother-view-group.customizedExactDateOfBirthUnknown')
+    if (val === 'true' || val === true) return true
+    if (val === 'false' || val === false) return false
+    if (val != null) return true
+    return undefined
+  },
   'mother.yearOfBirth': (data: EventRegistration) =>
     getCustomField(data, 'birth.mother.mother-view-group.yearOfBirth'),
   'mother.iD': (data: EventRegistration) => data.mother?.identifier?.[0]?.id,
@@ -74,11 +78,13 @@ const initialCountryResolver = {
       data,
       'birth.father.father-view-group.fatherHasFormallyRecognisedChild'
     ),
-  'father.customizedExactDateOfBirthUnknown': (data: EventRegistration) =>
-    getCustomField(
-      data,
-      'birth.father.father-view-group.customizedExactDateOfBirthUnknown'
-    ),
+  'father.customizedExactDateOfBirthUnknown': (data: EventRegistration) => {
+    const val = getCustomField(data, 'birth.father.father-view-group.customizedExactDateOfBirthUnknown')
+    if (val === 'true' || val === true) return true
+    if (val === 'false' || val === false) return false
+    if (val != null) return true
+    return undefined
+  },
   'father.yearOfBirth': (data: EventRegistration) =>
     getCustomField(data, 'birth.father.father-view-group.yearOfBirth'),
   'father.iD': (data: EventRegistration) => data.father?.identifier?.[0]?.id,
