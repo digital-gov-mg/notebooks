@@ -354,7 +354,8 @@ function legacyHistoryItemToV2ActionType(
   return { type, declaration: {} }
 }
 
-function nonNullObjectKeys(obj: Record<string, any>) {
+function nonNullObjectKeys(obj: Record<string, any> | null | undefined) {
+  if (obj == null) return {}
   return Object.fromEntries(
     Object.entries(obj).filter(
       ([_, value]) => value !== null && value !== undefined
